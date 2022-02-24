@@ -20,8 +20,19 @@ const ItemList = () => {
             .then(function (responses) {
                 return Promise.all(responses.map(resp => resp.json()))
             }).then((data) => {
-                console.log(data);
-                setPokemons(data);
+                Promise.all(data.map(e => fetch(e.species.url)))
+                    .then(function (responses) {
+                        return Promise.all(responses.map(resp => resp.json()))
+                    }).then((species) => {
+                        let finalData = [];
+                        for (var key in data) {
+                            let collection = [];
+                            collection.push(data[key]);
+                            collection.push(species[key]);
+                            finalData.push(collection);
+                        }
+                        setPokemons(finalData);
+                    })
             }).catch((error) => {
                 console.log(error);
             });
