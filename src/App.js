@@ -1,7 +1,7 @@
 import NavBar from './components/NavBar';
 import ItemListContainer from './components/ItemListContainer';
 import ItemList from './components/ItemList';
-import Pokemon from './components/Pokemon';
+//import Pokemon from './components/Pokemon';
 //import ComponenteEstado from './components/ComponenteEstado';
 //import Food from './components/Food';
 
@@ -13,9 +13,9 @@ function App() {
     return (
         <>
             <NavBar />
-            <ItemListContainer saludos={saludo.greetings} />
-            <ItemList>
-            </ItemList>
+            <ItemListContainer saludos={saludo.greetings}>
+                <ItemList />
+            </ItemListContainer>
         </>
     );
 }

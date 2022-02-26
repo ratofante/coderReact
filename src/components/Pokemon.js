@@ -7,19 +7,31 @@ export const Pokemon = ({ props }) => {
         }
     }
 
+    // Cuando queremos pasarle un argumento específico, como la ID. 
+    const mouseOverHandler = (name) => {
+        console.log(name);
+    };
+    // Para recibir el evento. Util para Forms / Inputs.
+    const clickHandler = (e) => {
+        console.log(e);
+    }
+
     return (
         <div
-            className='bg-white w-72 h-96 p-1 shadow-sm hover:shadow-md shadow-white rounded m-3'>
+            className='bg-white w-72 h-96 p-1 shadow-sm hover:shadow-md shadow-white rounded m-3'
+            onMouseOver={() => mouseOverHandler(props[0].name)}>
             <div className="h-3/5 w-full border-2 border-double border-black rounded-sm bg-slate-600">
                 <img
-                    className="w-50"
+                    className="w-full h-full object-cover rounded-t"
                     src={props[0].sprites.other['official-artwork'].front_default}
-                    alt={props[0].name} className='w-full h-full object-cover rounded-t'
+                    alt={props[0].name}
                 />
             </div>
             <div className="w-full h-1/4 p-3">
                 <button type='button' href="#" className=" hover:text-yellow-600 text-gray-700">
-                    <span className="text-lg font-semibold uppercase tracking-wide ">
+                    <span
+                        className="text-lg font-semibold uppercase tracking-wide"
+                        onClick={clickHandler}>
                         {props[0].name}
                     </span>
                 </button>
