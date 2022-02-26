@@ -3,14 +3,13 @@ import ItemList from './ItemList'
 
 const ItemListContainer = (props) => {
     return (
-        <div>
-            <h2 className='text-3xl text-white mt-8 text-center'>
+        <div className='relative'>
+            <h2 className='text-3xl text-slate-800 mt-8 text-center'>
                 {props.saludos}
             </h2>
             <hr></hr>
             <ItemList></ItemList>
         </div>
-
     )
 }
 
