@@ -2,7 +2,7 @@ export const Pokemon = ({ props }) => {
     let sprites = '';
     let text = props[1].flavor_text_entries;
     for (var i in text) {
-        if (text[i].language.name == 'en' && text[i].version.name == 'yellow') {
+        if (text[i].language.name === 'en' && text[i].version.name === 'yellow') {
             sprites = text[i].flavor_text;
         }
     }
