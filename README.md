@@ -34,3 +34,5 @@ Por ahora estoy usando:
 
 - Resolver problema con react-transition-group findDOMNode
 - Agregar filtros de búsqueda por categoría
+- Al clickear fuera del menú 'productos', necesito que desaparezca
+- Agregar animación para que, al hacer click en un producto `show/{id}`, se desplace la ventana hasta el detail del producto. 
