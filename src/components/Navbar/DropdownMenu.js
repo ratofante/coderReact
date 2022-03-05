@@ -1,21 +1,22 @@
-import { useState } from 'react';
 //Library
 import { CSSTransition } from 'react-transition-group';
 //Icons
 import { BiStore as StoreIcon } from 'react-icons/bi';
-import { BsChevronRight as ArrowRight } from 'react-icons/bs';
-import { BsChevronLeft as ArrowLeft } from 'react-icons/bs';
-import { MdOutlineGroupWork as GroupIcon } from 'react-icons/md';
+import { BsChevronRight as ArrowRight, BsChevronLeft as ArrowLeft } from 'react-icons/bs';
+import { MdOutlineCategory as TypesIcon } from "react-icons/md";
+
+//React
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const DropdownMenu = (props) => {
-
-
 
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
 
     function calcHeight(el) {
+        console.log(el);
         const height = el.offsetHeight + 30;
         setMenuHeight(height);
     }
@@ -24,13 +25,13 @@ const DropdownMenu = (props) => {
         return (
             // onClick chequeamos primero que exista la prop.goToMenu para luego
             //ejecutar el cambio de estado.
-            <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+            <div className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
                 <span className="icon-button">{props.leftIcon}</span>
 
                 {props.children}
 
                 <span className="icon-right">{props.rightIcon}</span>
-            </a>
+            </div>
         );
     }
 
@@ -44,9 +45,13 @@ const DropdownMenu = (props) => {
                 onEnter={calcHeight}
             >
                 <div className="menu">
-                    <DropdownItem leftIcon={<StoreIcon />}>All Products</DropdownItem>
                     <DropdownItem
-                        leftIcon={<GroupIcon />}
+                        leftIcon={<StoreIcon />}
+                    >
+                        <Link to="/products">All Products</Link>
+                    </DropdownItem>
+                    <DropdownItem
+                        leftIcon={<TypesIcon />}
                         rightIcon={<ArrowRight />}
                         goToMenu="types">
                         Types

@@ -5,16 +5,10 @@ import reactDom from 'react-dom';
 import './index.css'
 
 import App from './App';
-import { BrowserRouter } from 'react-router-dom';
 
 reactDom.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-
-
-
+        <App />
     </React.StrictMode>,
 
     document.getElementById('root')

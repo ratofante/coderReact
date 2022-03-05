@@ -37,12 +37,10 @@ const ItemList = () => {
                 console.log(error);
             });
     }
-
     return (
         <>
             <div className='h-screen w-screen py-6 flex items-center justify-center flex-wrap'>
-                {pokemons.map(p => <Pokemon key={p.id} props={p}>{p.name}</Pokemon>)}
-                {pokemons.map(p => <span>{p.name}</span>)}
+                {pokemons.map(p => <Pokemon key={p[0].id} props={p}>{p[0].name}</Pokemon>)}
             </div>
         </>
     );

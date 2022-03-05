@@ -1,31 +1,26 @@
-/*import NavBar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
-import ItemList from './components/ItemList';*/
-
-/*const saludo = {
-    greetings: 'Welcome to React Store',
-}*/
-
 import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 //COMPONENTS
-import Navbar from "./components/Navbar";
-import NavItem from "./components/NavItem";
-import DropdownMenu from "./components/DropdownMenu";
-// ICONS
-import { MdOutlineCategory as CategoryIcon } from "react-icons/md";
+import Navbar from "./components/Navbar/Navbar";
+import ItemListContainer from './components/Products/ItemListContainer';
+
+import Home from "./components/Home";
+import Product from "./components/Products/Product/Product";
+
 
 function App() {
     return (
         <>
-            <Navbar>
-                <NavItem icon={<CategoryIcon />} />
-                <NavItem icon={<CategoryIcon />} />
-                <NavItem icon={<CategoryIcon />} />
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route index element={<Home />} />
 
-                <NavItem icon={<CategoryIcon />}>
-                    <DropdownMenu />
-                </NavItem>
-            </Navbar>
+                    <Route path="products" element={<ItemListContainer />}>
+                        <Route path="show/:id" element={<Product />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
         </>
     );
 }
