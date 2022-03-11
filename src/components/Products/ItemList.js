@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Pokemon } from "./Pokemon";
+import Loading from "../Loading/Loading";
 
 const ItemList = () => {
 
-    const [pokemons, setPokemons] = useState([])
+    const [pokemons, setPokemons] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getPokemons();
@@ -32,6 +34,7 @@ const ItemList = () => {
                             finalData.push(collection);
                         }
                         setPokemons(finalData);
+                        setLoading(false);
                     })
             }).catch((error) => {
                 console.log(error);
@@ -40,7 +43,7 @@ const ItemList = () => {
     return (
         <>
             <div className='h-screen w-screen py-6 flex items-center justify-center flex-wrap'>
-                {pokemons.map(p => <Pokemon key={p[0].id} props={p}>{p[0].name}</Pokemon>)}
+                {loading ? <Loading /> : pokemons.map(p => <Pokemon key={p[0].id} props={p}>{p[0].name}</Pokemon>)}
             </div>
         </>
     );

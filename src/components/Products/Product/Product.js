@@ -16,13 +16,6 @@ const Product = () => {
         return console.log(product);
     }, [id]);
 
-    /*const getProduct = () => {
-        fetch(URL + id)
-            .then((resp) => resp.json())
-            .then((resp) => {setProduct(resp); console.log(product)})
-            .catch((error) => console.log(error))
-    }*/
-
     const getProduct = async () => {
         try {
             const response = await fetch(URL + id)
@@ -33,7 +26,6 @@ const Product = () => {
         } catch (error) {
             console.log(error);
         }
-
     }
 
     return (

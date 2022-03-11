@@ -2,7 +2,7 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import ItemList from './ItemList'
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
     return (
         <>
             <Outlet />

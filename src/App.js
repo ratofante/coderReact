@@ -14,11 +14,13 @@ function App() {
             <BrowserRouter>
                 <Navbar />
                 <Routes>
+
                     <Route index element={<Home />} />
 
                     <Route path="products" element={<ItemListContainer />}>
                         <Route path="show/:id" element={<Product />} />
                     </Route>
+
                 </Routes>
             </BrowserRouter>
         </>

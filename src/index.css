@@ -180,13 +180,113 @@ transition: all var(--speed) ease;
     transform: translateX(110%);
     transition: all var(--speed) ease;
 }
+/* LOADING COMPONENT */ 
+.loading-div {
+    width: 80vw;
+    max-width: 450px;
+}
+.loading-div-text {
+    color: var(--text-color);
+    font-size: 2rem;
+    text-align: center;
+    width: 100px;
+}
+.loading-div-icon {
+    width: 86px;
+    margin: auto;
+}
+.loading-text-and-dots {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    margin-top: 2rem;
+}
+/**
+ * ==============================================
+ * Dot Flashing
+ * ==============================================
+ */
+  .stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 24px 0px;
+    margin: 0 1%;
+    overflow: hidden;
+    width: 50px;
+  }
+
+.dot-flashing {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dotFlashing 1s infinite linear alternate;
+  animation-delay: .5s;
+}
+
+.dot-flashing::before, .dot-flashing::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-flashing::before {
+  left: -15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 0s;
+}
+
+.dot-flashing::after {
+  left: 15px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #9880ff;
+  color: #9880ff;
+  animation: dotFlashing 1s infinite alternate;
+  animation-delay: 1s;
+}
+
+@keyframes dotFlashing {
+  0% {
+    background-color: #9880ff;
+  }
+  50%,
+  100% {
+    background-color: #ebe6ff;
+  }
+}
 
 /* Product Card Container */
-
-.product-card-container {
+/* .product-card-container {
     max-width: 95vw;
     margin: 30px auto;
     border-radius: 10px;
+} */
+.product-card-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    padding: 3rem;
+    overflow: auto;
+}
+.product-card {
+    padding-top: 0px;
+    padding: 0px 1.25rem 20px 1.25rem;
 }
 .exit-product {
     height: 50px;
@@ -213,8 +313,43 @@ transition: all var(--speed) ease;
 .product-card-small-img {
     width: 95px;
 }
-
 .stars-review {
     display:flex;
     flex-flow: row;
+}
+.product-card-footer {
+    display: flex;
+    flex-flow: column;
+    padding-bottom: 15px;
+}
+.qty-counter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.add-item-counter {
+    display: flex;
+    justify-content: space-between;
+    width: 90px;
+    margin-left: auto;
+    padding: .2rem;
+    background-color: #e5e7eb;
+    border-radius: 21px;
+}
+.add-item-counter button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #6b7280;
+    opacity: 0.8;
+}
+.price-cart-like {
+    display: flex;
+    flex-flow: row;
+}
+.add-product-button {
+    align-items: center;
 }
