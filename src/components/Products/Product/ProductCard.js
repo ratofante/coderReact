@@ -2,15 +2,13 @@
 import { VscChromeClose as CrossIcon } from 'react-icons/vsc';
 import { BsCart3 as CartIcon } from 'react-icons/bs';
 
-import React from 'react'
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCardFooter from './ProductCardFooter';
 
 const ProductCard = (props) => {
-    console.log(props.props);
+
     const d = props.props;
-
-
     return (
         <div className="product-card-container">
             <section className="text-gray-700 body-font overflow-hidden bg-white">
@@ -31,19 +29,19 @@ const ProductCard = (props) => {
                             <div className="flex mb-4">
                                 <span className="flex justify-center flex-col md:flex-row items-center">
                                     <div className="stars-review">
-                                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                                        <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                         </svg>
-                                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                                        <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                         </svg>
-                                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                                        <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                         </svg>
-                                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                                        <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                         </svg>
-                                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+                                        <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
                                             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                                         </svg>
                                     </div>
@@ -62,7 +60,7 @@ const ProductCard = (props) => {
                                 <summary>
                                     Details
                                 </summary>
-                                <p>
+                                <div>
                                     <p>Base Exp: {d.base_experience}</p>
                                     <p>Height: {d.height}</p>
                                     <p>Health Points: {d.stats[0].base_stat}</p>
@@ -72,10 +70,9 @@ const ProductCard = (props) => {
                                     <p>Special Defense: {d.stats[4].base_stat}</p>
                                     <p>Speed: {d.stats[5].base_stat}</p>
                                     <p>Weight: {d.weight}</p>
-                                </p>
+                                </div>
                             </details>
-
-                            <ProductCardFooter />
+                            <ProductCardFooter props={d} />
                         </div>
                     </div>
                 </div>

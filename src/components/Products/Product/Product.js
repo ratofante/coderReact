@@ -13,7 +13,6 @@ const Product = () => {
 
     useEffect(() => {
         getProduct();
-        return console.log(product);
     }, [id]);
 
     const getProduct = async () => {
@@ -22,7 +21,6 @@ const Product = () => {
             const data = await response.json();
 
             setProduct(data);
-            console.log(data);
         } catch (error) {
             console.log(error);
         }
