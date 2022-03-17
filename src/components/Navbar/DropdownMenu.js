@@ -16,15 +16,13 @@ const DropdownMenu = (props) => {
     const [menuHeight, setMenuHeight] = useState(null);
 
     function calcHeight(el) {
-        console.log(el);
         const height = el.offsetHeight + 30;
         setMenuHeight(height);
     }
 
     function DropdownItem(props) {
         return (
-            // onClick chequeamos primero que exista la prop.goToMenu para luego
-            //ejecutar el cambio de estado.
+            // onClick chequeamos primero que exista la prop.goToMenu para luego ejecutar el cambio de estado.
             <div className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
                 <span className="icon-button">{props.leftIcon}</span>
 
@@ -45,15 +43,16 @@ const DropdownMenu = (props) => {
                 onEnter={calcHeight}
             >
                 <div className="menu">
-                    <DropdownItem
+                    <DropdownItem onClick={() => console.log('ey!')}
                         leftIcon={<StoreIcon />}
                     >
-                        <Link to="/products">All Products</Link>
+                        <Link to="/products" onClick={() => props.closeMenu('close')}>All Products</Link>
                     </DropdownItem>
                     <DropdownItem
                         leftIcon={<TypesIcon />}
                         rightIcon={<ArrowRight />}
-                        goToMenu="types">
+                        goToMenu="types"
+                    >
                         Types
                     </DropdownItem>
                 </div>
@@ -68,15 +67,20 @@ const DropdownMenu = (props) => {
                 onEnter={calcHeight}
             >
                 <div className='menu'>
-                    <DropdownItem>Type 1</DropdownItem>
-                    <DropdownItem>Type 2</DropdownItem>
-                    <DropdownItem>Type 3</DropdownItem>
-                    <DropdownItem>Type 1</DropdownItem>
-                    <DropdownItem>Type 2</DropdownItem>
-                    <DropdownItem>Type 3</DropdownItem>
-                    <DropdownItem>Type 1</DropdownItem>
-                    <DropdownItem>Type 2</DropdownItem>
-                    <DropdownItem>Type 3</DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/type/1"
+                            onClick={() => props.closeMenu('close')}>
+                            Type 1
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/type/2"
+                            onClick={() => props.closeMenu('close')}>
+                            Type 2
+                        </Link>
+                    </DropdownItem>
                     <DropdownItem
                         leftIcon={<ArrowLeft />}
                         goToMenu="main">

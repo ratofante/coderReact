@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 
 export const Navbar = () => {
     return (
+
         <nav className='navbar'>
             <ul className="navbar-nav">
                 <div className='navbar-logo'>
@@ -24,6 +25,8 @@ export const Navbar = () => {
                 </NavItemDropdown>
             </ul>
         </nav>
+
+
     );
 }
 export default Navbar;

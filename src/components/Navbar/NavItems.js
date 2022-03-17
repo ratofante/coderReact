@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const NavItems = (props) => {
+const NavItems = () => {
 
     const urls = [
         { link: 'contact', icon: <PersonIcon /> },
