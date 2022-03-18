@@ -127,7 +127,7 @@ a {
    position:absolute;
    top: calc(var(--nav-size) - 2px);
    width: 300px;
-   transform: translateX(-45%);
+   transform: translateX(-94%);
    background-color: var(--bg-dark);
    border: var(--border);
    border-radius: var(--border-radius);

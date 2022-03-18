@@ -1,20 +1,27 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import ClickOutside from "../../Hooks/clickOutside";
 import DropdownMenu from "./DropdownMenu";
+import { NavContext, NavContextProvider } from "./NavContextProvider";
 
 const NavItemDropdown = (props) => {
 
-    const [open, setOpen] = useState('close');
+    // const [open, setOpen] = useState('close');
 
-    function toggleMenu() {
-        open === 'open' ? setOpen('close') : setOpen('open');
-    }
+    // function toggleMenu() {
+    //     open === 'open' ? setOpen('close') : setOpen('open');
+    // }
+
+    const { menuState, setMenuState } = useContext(NavContext)
 
     return (
         <li className="nav-item">
-            <div className="icon-button" onClick={() => { toggleMenu() }}>
+            <div className="icon-button" onClick={() => { setMenuState(!menuState) }}>
                 {props.icon}
             </div>
-            {open === 'open' && <DropdownMenu closeMenu={menu => setOpen(menu)} />}
+            <ClickOutside>
+                {menuState && <DropdownMenu />}
+            </ClickOutside>
+
         </li>
     );
 }

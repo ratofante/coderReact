@@ -6,11 +6,14 @@ import { BsChevronRight as ArrowRight, BsChevronLeft as ArrowLeft } from 'react-
 import { MdOutlineCategory as TypesIcon } from "react-icons/md";
 
 //React
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { NavContext } from './NavContextProvider';
 
 
 const DropdownMenu = (props) => {
+
+    const { menuState, setMenuState } = useContext(NavContext);
 
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState(null);
@@ -46,7 +49,7 @@ const DropdownMenu = (props) => {
                     <DropdownItem onClick={() => console.log('ey!')}
                         leftIcon={<StoreIcon />}
                     >
-                        <Link to="/products" onClick={() => props.closeMenu('close')}>All Products</Link>
+                        <Link to="/products" onClick={() => { setMenuState(!menuState) }}>All Products</Link>
                     </DropdownItem>
                     <DropdownItem
                         leftIcon={<TypesIcon />}
@@ -70,14 +73,14 @@ const DropdownMenu = (props) => {
                     <DropdownItem>
                         <Link
                             to="/products/type/1"
-                            onClick={() => props.closeMenu('close')}>
+                            onClick={() => { setMenuState(!menuState) }}>
                             Type 1
                         </Link>
                     </DropdownItem>
                     <DropdownItem>
                         <Link
                             to="/products/type/2"
-                            onClick={() => props.closeMenu('close')}>
+                            onClick={() => { setMenuState(!menuState) }}>
                             Type 2
                         </Link>
                     </DropdownItem>

@@ -1,8 +1,6 @@
 //ICONS
 import { VscChromeClose as CrossIcon } from 'react-icons/vsc';
-import { BsCart3 as CartIcon } from 'react-icons/bs';
 
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import ProductCardFooter from './ProductCardFooter';
 

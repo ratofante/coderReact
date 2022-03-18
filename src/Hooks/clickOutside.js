@@ -1,10 +1,13 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useContext } from 'react';
+import { NavContext } from '../components/Navbar/NavContextProvider';
 
-function useOutsideAlert(ref) {
+function useClickOutside(ref) {
+   const { menuState, setMenuState } = useContext(NavContext);
+
    useEffect(() => {
       function handleClicklOutside(event) {
          if (ref.current && !ref.current.contains(event.target)) {
-            console.log('afuera');
+            if (menuState) { setMenuState(false) };
          }
       }
 
@@ -18,7 +21,7 @@ function useOutsideAlert(ref) {
 
 function ClickOutside(props) {
    const wrapperRef = useRef(null);
-   useOutsideAlert(wrapperRef);
+   useClickOutside(wrapperRef);
 
    return <div ref={wrapperRef}>{props.children}</div>;
 }
