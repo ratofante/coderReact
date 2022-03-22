@@ -46,7 +46,7 @@ const Products = () => {
                   <div className="w-full h-1/4 p-3">
                      <button type='button' href="#" className=" hover:text-yellow-600 text-gray-700">
                         <span className="text-lg font-semibold uppercase tracking-wide">
-                           {e.name}
+                           {e.name} {e.key}
                         </span>
                      </button>
                      <p className="text-gray-600 text-sm leading-5 mt-1">

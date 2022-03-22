@@ -1,15 +1,31 @@
-import { useState, useContext } from 'react';
-import { CartContext, CartContextProvider } from '../../../CartContextProvider';
+import { useState, useContext, useEffect } from 'react';
+import { CartContext } from '../../../CartContextProvider';
 
 import { BsCart3 as CartIcon } from 'react-icons/bs';
 import { GrFormAdd as Add, GrFormSubtract as Minus } from 'react-icons/gr';
 
 const ProductCardFooter = ({ product }) => {
 
-   const { addItemToCart } = useContext(CartContext);
+   const { addItemToCart, cartItems } = useContext(CartContext);
 
    const [available, setAvailable] = useState(product.qty);
    const [itemCount, setItemCount] = useState(0);
+
+   useEffect(() => {
+      /* Chequeamos si el item ya está en el carrito
+         Si está, seteamos itemCount y available para que
+         muestren las cantidades correspondientes */
+      cartItems.forEach(e => {
+         if (e.key === product.key) {
+            // el item está en el carrito! :
+            setAvailable((product.qty - e.count) - itemCount);
+            setItemCount(e.count);
+            console.log('footer trigger');
+         }
+      });
+   }, [addItemToCart]);
+
+
 
    const addItem = () => {
       if (available > 0) {

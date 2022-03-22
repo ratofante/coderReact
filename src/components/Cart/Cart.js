@@ -1,24 +1,23 @@
 import React, { useContext } from 'react'
-import { CartContext, CartContextProvider } from '../../CartContextProvider'
+import { CartContext } from '../../CartContextProvider'
+import CartItem from './CartItem';
 
 
 const Cart = () => {
-    const { itemsCart } = useContext(CartContext);
+    const { cartItems } = useContext(CartContext);
 
     return (
         <>
-            <h1 className='cart-header'>My Cart</h1>
-            {itemsCart.map((item) => {
-                return (
-                    <div key={item.id} className='cart-product'>
-                        <h2 className='product-name'>{item.name}</h2>
-                        <span className='product-qty'>x {item.qty}</span>
-                        <div className='product-cart-img'>
-                            <img src={item.smallImgFront} alt={item.name} />
-                        </div>
-                    </div>
-                );
-            })}
+            <div className='w-screen m-auto mt-10 p-4 bg-white w-11/12 rounded'>
+
+                <h1 className='text-xl text-center color-gray-700'>My Cart</h1>
+
+                {cartItems.map((item) => {
+                    return <CartItem item={item} key={item.key} />
+                })}
+
+            </div>
+
         </>
     )
 }

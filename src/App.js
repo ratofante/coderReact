@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 //COMPONENTS
 import Navbar from "./components/Navbar/Navbar";
-import ItemListContainer from './components/Products/ItemListContainer';
 import Home from "./components/Home";
 import CartContextProvider from "./CartContextProvider";
 import Cart from "./components/Cart/Cart";
@@ -13,7 +12,6 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import ProductList from "./components/Products/ProductList";
 import Product from "./components/Products/Product/Product";
 const auth = getAuth(FirebaseApp);
-
 
 function App() {
 

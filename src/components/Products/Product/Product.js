@@ -22,7 +22,7 @@ const Product = () => {
       let docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-         setProductData(docSnap.data());
+         setProductData({ ...docSnap.data(), key: docSnap.id });
       } else {
          console.log('ups!');
       }

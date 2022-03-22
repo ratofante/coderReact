@@ -54,9 +54,6 @@ const Home = () => {
                 <button onClick={() => signOut(auth)}>Sign Out</button>
             </div>
             <hr />
-            <div className='products-container'>
-                <ListadoProductos />
-            </div>
         </div>
     )
 }
