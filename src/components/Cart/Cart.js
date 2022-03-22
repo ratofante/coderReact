@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { CartContext, CartContextProvider } from '../CartContextProvider'
+import { CartContext, CartContextProvider } from '../../CartContextProvider'
 
 
 const Cart = () => {
@@ -14,7 +14,7 @@ const Cart = () => {
                         <h2 className='product-name'>{item.name}</h2>
                         <span className='product-qty'>x {item.qty}</span>
                         <div className='product-cart-img'>
-                            <img src={item.sprites.front_default} alt={item.name} />
+                            <img src={item.smallImgFront} alt={item.name} />
                         </div>
                     </div>
                 );

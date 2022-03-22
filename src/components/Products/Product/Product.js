@@ -1,36 +1,38 @@
-import ProductCard from './ProductCard';
 
 import { React, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import FirebaseApp from '../../../credentials';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import ProductCard from './ProductCard';
+
+const db = getFirestore(FirebaseApp);
 
 const Product = () => {
 
-    const URL = 'https://pokeapi.co/api/v2/pokemon/';
-    let { id } = useParams();
-    //console.log(id);
+   const [productData, setProductData] = useState(null);
+   let { id } = useParams();
 
-    const [product, setProduct] = useState('');
+   useEffect(() => {
+      asynCall();
+   }, [id]);
 
-    useEffect(() => {
-        getProduct();
-    }, [id]);
+   //query a firebase
+   const asynCall = async () => {
+      let docRef = doc(db, 'products', id);
+      let docSnap = await getDoc(docRef);
 
-    const getProduct = async () => {
-        try {
-            const response = await fetch(URL + id)
-            const data = await response.json();
+      if (docSnap.exists()) {
+         setProductData(docSnap.data());
+      } else {
+         console.log('ups!');
+      }
+   }
 
-            setProduct(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    return (
-        <>
-            {product && <ProductCard props={product} />}
-        </>
-    );
+   return (
+      <>
+         {productData && <ProductCard product={productData} />}
+      </>
+   )
 }
 
-export default Product
+export default Product;

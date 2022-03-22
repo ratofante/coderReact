@@ -4,14 +4,14 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import ItemListContainer from './components/Products/ItemListContainer';
 import Home from "./components/Home";
-import Product from "./components/Products/Product/Product";
-import CartContextProvider from "./components/CartContextProvider";
+import CartContextProvider from "./CartContextProvider";
 import Cart from "./components/Cart/Cart";
 import SignUp from "./components/Auth/SignUp";
 
 import FirebaseApp from "./credentials";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import ProductList from "./components/Products/ProductList";
+import Product from "./components/Products/Product/Product";
 const auth = getAuth(FirebaseApp);
 
 
