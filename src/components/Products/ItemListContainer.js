@@ -9,7 +9,6 @@ const ItemListContainer = () => {
                 <ItemList />
             </div>
         </>
-
     )
 }
 
