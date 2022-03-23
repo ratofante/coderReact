@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { VscChromeClose as CrossIcon } from 'react-icons/vsc';
 import { Link } from 'react-router-dom';
 import ProductCardFooter from './ProductCardFooter';
@@ -5,6 +6,13 @@ import ProductCardFooter from './ProductCardFooter';
 const ProductCard = (props) => {
 
    const { product } = props;
+
+   useEffect(() => {
+      let card = document.getElementById('product-card-container');
+      if (card.classList.contains('move-left')) {
+         card.classList.remove('move-left');
+      }
+   })
 
    return (
       <div id="product-card-container">

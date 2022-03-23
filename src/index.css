@@ -417,6 +417,21 @@ align-content: end;
 transform: translate(+75%, -50%);
 border-radius: 50%;
 }
+#nav-message {
+    background-color: black;
+color: white;
+width: 80vw;
+max-width: 250px;
+text-align: center;
+padding: .5rem;
+border-radius: 10px;
+position: absolute;
+right: 15px;
+transition: transform 300ms ease-in-out;
+transform: translate(100vw, -5px);
+}
 
-
+.move-left {
+    transform: translateX(-110%);
+}
 

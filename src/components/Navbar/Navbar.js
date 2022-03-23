@@ -27,6 +27,7 @@ export const Navbar = () => {
                     </NavItemDropdown>
                 </ul>
             </nav>
+            <div id="nav-message"> Item added to Cart! </div>
         </NavContextProvider>
     );
 }

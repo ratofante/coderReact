@@ -15,16 +15,20 @@ const ProductCardFooter = ({ product }) => {
    const [message, setMessage] = useState('');
 
    useEffect(() => {
+
+      let card = document.getElementById('product-card-container');
+      if (card.classList.contains('move-left')) {
+         card.classList.remove('move-left');
+      }
+
+
       /* Chequeamos si el item ya está en el carrito
          Si está, seteamos itemCount y available para que
          muestren las cantidades correspondientes */
       cartItems.forEach(e => {
          if (e.key === product.key) {
-            console.log(product.qty, e.count, itemCount)
             // el item está en el carrito! :
             setAvailable((product.qty - e.count) - itemCount);
-
-            console.log(available + 'footer trigger');
          }
       });
    }, [addItemToCart]);
@@ -48,13 +52,22 @@ const ProductCardFooter = ({ product }) => {
       setLoading(true);
       if (count > 0) {
          addItemToCart(item, count);
+         const card = document.getElementById('product-card-container');
+         const navMsg = document.getElementById('nav-message');
          setTimeout(() => {
-            const card = document.getElementById('product-card-container');
-            card.style.transform = "translateX(-110%)";
+            card.classList.add('move-left');
+
+         }, 500);
+         setTimeout(() => {
+            navMsg.style.transform = "translate(110vw, -5px)";
          }, 500);
          setTimeout(() => {
             window.history.replaceState(null, null, "/products")
-         }, 1000)
+         }, 1000);
+         card.classList.remove('move-left');
+         console.log('llegamos aquí');
+
+         navMsg.style.transform = "translate(110vw, -5px)";
 
       } else {
          setMessage('Please tell us how many items do you want to add');
