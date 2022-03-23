@@ -20,8 +20,9 @@ const CartItem = ({ item }) => {
          <div>
             <img src={item.smallImgFront} alt={item.name} />
          </div>
-
-
+         <div className='flex items-center justify-center'>
+            <p className='text-2xl'><span className='mr-5 text-xs'>x</span>{item.count * item.price}</p>
+         </div>
       </div>
    )
 }

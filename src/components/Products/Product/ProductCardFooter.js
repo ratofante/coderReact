@@ -15,13 +15,6 @@ const ProductCardFooter = ({ product }) => {
    const [message, setMessage] = useState('');
 
    useEffect(() => {
-
-      let card = document.getElementById('product-card-container');
-      if (card.classList.contains('move-left')) {
-         card.classList.remove('move-left');
-      }
-
-
       /* Chequeamos si el item ya está en el carrito
          Si está, seteamos itemCount y available para que
          muestren las cantidades correspondientes */
@@ -59,15 +52,19 @@ const ProductCardFooter = ({ product }) => {
 
          }, 500);
          setTimeout(() => {
-            navMsg.style.transform = "translate(110vw, -5px)";
+            navMsg.classList.add('show-nav-msg');
          }, 500);
          setTimeout(() => {
             window.history.replaceState(null, null, "/products")
+            setLoading(false);
+
          }, 1000);
+         setTimeout(() => {
+            navMsg.classList.remove('show-nav-msg');
+            navMsg.classList.add('hide-nav-msg');
+         }, 2500)
          card.classList.remove('move-left');
          console.log('llegamos aquí');
-
-         navMsg.style.transform = "translate(110vw, -5px)";
 
       } else {
          setMessage('Please tell us how many items do you want to add');

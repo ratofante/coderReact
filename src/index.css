@@ -419,19 +419,23 @@ border-radius: 50%;
 }
 #nav-message {
     background-color: black;
-color: white;
-width: 80vw;
-max-width: 250px;
-text-align: center;
-padding: .5rem;
-border-radius: 10px;
-position: absolute;
-right: 15px;
-transition: transform 300ms ease-in-out;
-transform: translate(100vw, -5px);
+    color: white;
+    width: 80vw;
+    max-width: 250px;
+    text-align: center;
+    padding: .5rem;
+    border-radius: 10px;
+    position: absolute;
+    right: 15px;
+    transition: transform 300ms ease-in-out;
 }
-
 .move-left {
     transform: translateX(-110%);
+}
+.hide-nav-msg {
+transform: translate(100vw, -5px);
+}
+.show-nav-msg {
+transform: translate(0px, -5px);
 }
 
