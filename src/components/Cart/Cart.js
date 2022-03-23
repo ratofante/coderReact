@@ -13,7 +13,7 @@ const Cart = () => {
                 <h1 className='text-xl text-center color-gray-700'>My Cart</h1>
 
                 {cartItems.map((item) => {
-                    return <CartItem item={item} key={item.key} />
+                    return <CartItem item={item} key={item.key}/>
                 })}
 
             </div>

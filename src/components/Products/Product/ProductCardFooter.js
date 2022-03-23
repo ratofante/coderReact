@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect } from 'react';
 import { CartContext } from '../../../CartContextProvider';
+import LoadingMin from '../../Loading/LoadingMin';
 
 import { BsCart3 as CartIcon } from 'react-icons/bs';
 import { GrFormAdd as Add, GrFormSubtract as Minus } from 'react-icons/gr';
@@ -10,6 +11,8 @@ const ProductCardFooter = ({ product }) => {
 
    const [available, setAvailable] = useState(product.qty);
    const [itemCount, setItemCount] = useState(0);
+   const [loading, setLoading] = useState(false);
+   const [message, setMessage] = useState('');
 
    useEffect(() => {
       /* Chequeamos si el item ya está en el carrito
@@ -17,10 +20,11 @@ const ProductCardFooter = ({ product }) => {
          muestren las cantidades correspondientes */
       cartItems.forEach(e => {
          if (e.key === product.key) {
+            console.log(product.qty, e.count, itemCount)
             // el item está en el carrito! :
             setAvailable((product.qty - e.count) - itemCount);
-            setItemCount(e.count);
-            console.log('footer trigger');
+
+            console.log(available + 'footer trigger');
          }
       });
    }, [addItemToCart]);
@@ -41,12 +45,27 @@ const ProductCardFooter = ({ product }) => {
    }
 
    const check = (item, count) => {
+      setLoading(true);
       if (count > 0) {
          addItemToCart(item, count);
+
+      } else {
+         setMessage('Please tell us how many items do you want to add');
+         showMessage();
       }
    }
 
-   return (
+   const showMessage = () => {
+      const message = document.getElementById('cart-message');
+      message.style.transform = "translateY(0%)";
+      setTimeout(() => {
+         message.style.transform = "translateY(-100%)";
+         setLoading(false);
+      }, 2000);
+   }
+
+   return (<>
+      <div id='cart-message'>El mensaje{message}</div>
       <div className="product-card-footer">
          <div className="qty-counter">
             <span>Available items: {available}</span>
@@ -62,7 +81,7 @@ const ProductCardFooter = ({ product }) => {
             <div className="footer-price-qty">
                <span className="title-font font-medium text-2xl text-gray-900">$ {product.price}</span>
             </div>
-
+            {loading && <LoadingMin />}
             <button onClick={() => { check(product, itemCount) }} className="add-product-button flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Add <CartIcon /></button>
             <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
@@ -71,7 +90,7 @@ const ProductCardFooter = ({ product }) => {
             </button>
          </div>
       </div>
-   )
+   </>)
 }
 
 export default ProductCardFooter

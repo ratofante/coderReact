@@ -186,12 +186,19 @@ transition: all var(--speed) ease;
     width: 80vw;
     max-width: 450px;
 }
+.loading-div-min {
+    position: relative;
+display: grid;
+align-content: center;
+margin-left: auto;
+}
 .loading-div-text {
     color: var(--text-color);
     font-size: 2rem;
     text-align: center;
     width: 100px;
 }
+
 .loading-div-icon {
     width: 86px;
     margin: auto;
@@ -202,6 +209,13 @@ transition: all var(--speed) ease;
     justify-content: center;
     margin-top: 2rem;
 }
+.loading-text-and-dots-min {
+   display: flex;
+    flex-flow: row;
+    justify-content: center;
+}
+
+
 /**
  * ==============================================
  * Dot Flashing
@@ -377,5 +391,20 @@ transition: all var(--speed) ease;
     margin-left: 20px;
     color: white;
 }
+#cart-message {
+    position: absolute;
+background-color: black;
+color: white;
+top: 0;
+left: 0;
+width: 100%;
+text-align: center;
+height: 50px;
+display: grid;
+align-content: center;
+transition: transform 300ms ease-in-out;
+transform: translateY(-100%);
+}
+
 
 

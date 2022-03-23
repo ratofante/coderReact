@@ -6,10 +6,10 @@ const CartItem = ({ item }) => {
       <div className='bg-gray-200 rounder flex flex-row border-b border-red-300 p-2'>
          <div>
             <h4>
-               {item.name}
+               {item.name.toUpperCase()}
             </h4>
             <p>
-               {item.price}
+               $ {item.price}
             </p>
             <p>
                Available: {item.qty - item.count}
