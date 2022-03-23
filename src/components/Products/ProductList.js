@@ -7,7 +7,7 @@ const ProductList = () => {
 
    return (<>
       <Outlet />
-      <div className='h-screen w-screen py-6 flex items-center justify-center flex-wrap'>
+      <div className='h-screen w-screen py-32 flex items-center justify-center flex-wrap'>
          <Products />
       </div>
    </>)

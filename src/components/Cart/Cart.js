@@ -15,23 +15,21 @@ const Cart = () => {
         });
         console.log(sumaTotal);
         setTotal(sumaTotal);
-    }, []);
+    }, [cartItems]);
 
 
     return (
         <>
-            <div className='w-screen m-auto mt-10 p-4 bg-white w-11/12 rounded'>
-
+            <div className='m-auto mt-32 p-4 bg-white w-11/12 rounded'>
                 <h1 className='text-xl text-center color-gray-700'>My Cart</h1>
 
-                {cartItems.map((item) => {
+                {cartItems.length > 0 ? cartItems.map((item) => {
                     return <CartItem item={item} key={item.key} />
-                })}
+                }) : <p className="mt-6 text-center">There's no product in your cart</p>}
 
                 <div>
                     {total > 0 && <p>Total : $ {total}</p>}
                 </div>
-
             </div>
 
 

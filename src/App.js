@@ -34,7 +34,7 @@ function App() {
     return (
         <CartContextProvider /*userEmail={regUser.email}*/>
             <BrowserRouter>
-                <Navbar />
+                <Navbar className='navbar fixed w-screen' />
                 <Routes>
 
                     <Route index element={<Home />} />

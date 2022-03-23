@@ -27,12 +27,22 @@ export function CartContextProvider({ children }) {
             console.log('agregamos item');
         }
     }
+    const removeItem = (id) => {
+        let newCart = cartItems.filter(item => item.key !== id)
+        setCartItems(newCart);
+        // for (let i = 0; i < cartItems.length; i++) {
+        //     if(cartItems[i].key === id) {
+
+        //     }
+        // }
+    }
 
     return (
         <CartContext.Provider value={{
             addItemToCart,
             cartItems,
-            items: cartItems.length
+            items: cartItems.length,
+            removeItem,
         }}>
             {children}
         </CartContext.Provider>

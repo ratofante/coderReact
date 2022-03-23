@@ -58,6 +58,7 @@ a {
 }
 
 .navbar {
+    top: 0;
     height: var(--nav-size);
     background-color: var(--bg-dark);
     padding: 0 1rem;

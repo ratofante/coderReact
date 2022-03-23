@@ -12,7 +12,7 @@ export const Navbar = () => {
     return (
 
         <NavContextProvider>
-            <nav className='navbar'>
+            <nav className='navbar fixed w-screen'>
                 <ul className="navbar-nav">
                     <div className='navbar-logo'>
                         <Link to={'/'}>
@@ -26,8 +26,9 @@ export const Navbar = () => {
                         <DropdownMenu />
                     </NavItemDropdown>
                 </ul>
+                <div id="nav-message" className='hide-nav-msg'> Item added to Cart! </div>
             </nav>
-            <div id="nav-message" className='hide-nav-msg'> Item added to Cart! </div>
+
         </NavContextProvider>
     );
 }
