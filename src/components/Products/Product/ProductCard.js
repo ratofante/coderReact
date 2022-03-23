@@ -7,7 +7,7 @@ const ProductCard = (props) => {
    const { product } = props;
 
    return (
-      <div className="product-card-container">
+      <div id="product-card-container">
          <section className="text-gray-700 body-font overflow-hidden bg-white">
             <div className="exit-product">
                <Link to={'/products'} className="text-gray-700">

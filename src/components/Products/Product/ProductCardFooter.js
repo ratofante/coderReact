@@ -48,6 +48,13 @@ const ProductCardFooter = ({ product }) => {
       setLoading(true);
       if (count > 0) {
          addItemToCart(item, count);
+         setTimeout(() => {
+            const card = document.getElementById('product-card-container');
+            card.style.transform = "translateX(-110%)";
+         }, 500);
+         setTimeout(() => {
+            window.history.replaceState(null, null, "/products")
+         }, 1000)
 
       } else {
          setMessage('Please tell us how many items do you want to add');

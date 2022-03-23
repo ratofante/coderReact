@@ -6,7 +6,7 @@ export function CartContextProvider({ children }) {
 
     //Items & Cart
     const [cartItems, setCartItems] = useState([]);
-    const [enElCarrito, setEnElCarrito] = useState(false);
+    //const [enElCarrito, setEnElCarrito] = useState(false);
 
 
     const addItemToCart = (item, count) => {
@@ -25,7 +25,6 @@ export function CartContextProvider({ children }) {
         console.log(state);
         if (state === false) {
             const newItem = { ...item, count: count };
-            //console.log(newItem);
             setCartItems([...cartItems, newItem]);
             console.log('agregamos item');
         }
@@ -58,7 +57,8 @@ export function CartContextProvider({ children }) {
     return (
         <CartContext.Provider value={{
             addItemToCart,
-            cartItems
+            cartItems,
+            items: cartItems.length
         }}>
             {children}
         </CartContext.Provider>
