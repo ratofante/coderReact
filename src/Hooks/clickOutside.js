@@ -7,6 +7,7 @@ function useClickOutside(ref) {
    useEffect(() => {
       function handleClicklOutside(event) {
          if (ref.current && !ref.current.contains(event.target)) {
+            console.log('click afuera');
             if (menuState) { setMenuState(false) };
          }
       }

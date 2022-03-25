@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../../CartContextProvider'
 import CartItem from './CartItem';
-
 
 const Cart = () => {
     const { cartItems } = useContext(CartContext);
@@ -27,9 +27,23 @@ const Cart = () => {
                     return <CartItem item={item} key={item.key} />
                 }) : <p className="mt-6 text-center">There's no product in your cart</p>}
 
-                <div>
-                    {total > 0 && <p>Total : $ {total}</p>}
+                <div className='flex flex-row items-center p-6 pb-0'>
+                    {total > 0 &&
+                        <p className='mr-20'>
+                            Total : $ {total}
+                        </p>}
+                    {total > 0 &&
+                        <Link to="/cart/purchase">
+                            <button className='bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded'>
+                                Purchase
+                            </button>
+                        </Link>}
+
+
                 </div>
+
+
+
             </div>
 
 

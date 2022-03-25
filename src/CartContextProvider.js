@@ -8,33 +8,35 @@ export function CartContextProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
 
     const addItemToCart = (item, count) => {
-        let state = false;
+        let yaEnCart = false;
 
         for (let i = 0; i < cartItems.length; i++) {
             if (cartItems[i].key === item.key) {
 
                 cartItems[i].count = cartItems[i].count + count;
                 setCartItems(cartItems);
-                state = true;
-                console.log(state);
+                yaEnCart = true;
+                console.log(yaEnCart);
                 console.log('actualizamos count');
             }
         }
-        console.log(state);
-        if (state === false) {
+
+        console.log(yaEnCart);
+        if (yaEnCart === false) {
             const newItem = { ...item, count: count };
             setCartItems([...cartItems, newItem]);
+
+
+
             console.log('agregamos item');
         }
     }
+
+
+
     const removeItem = (id) => {
         let newCart = cartItems.filter(item => item.key !== id)
         setCartItems(newCart);
-        // for (let i = 0; i < cartItems.length; i++) {
-        //     if(cartItems[i].key === id) {
-
-        //     }
-        // }
     }
 
     return (
