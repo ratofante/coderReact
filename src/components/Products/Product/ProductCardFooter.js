@@ -64,8 +64,6 @@ const ProductCardFooter = ({ product }) => {
             navMsg.classList.add('hide-nav-msg');
          }, 2500)
          card.classList.remove('move-left');
-         console.log('llegamos aquí');
-
       } else {
          setMessage('Please tell us how many items do you want to add');
          showMessage();

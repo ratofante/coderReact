@@ -2,13 +2,14 @@ import React, { useRef, useEffect, useContext } from 'react';
 import { NavContext } from '../components/Navbar/NavContextProvider';
 
 function useClickOutside(ref) {
-   const { menuState, setMenuState } = useContext(NavContext);
+   const { menuState, toggleMenu, setMenuState } = useContext(NavContext);
 
    useEffect(() => {
       function handleClicklOutside(event) {
          if (ref.current && !ref.current.contains(event.target)) {
-            console.log('click afuera');
-            if (menuState) { setMenuState(false) };
+            console.log('click afuera', menuState);
+            //toggleMenu();
+            if (menuState === true) { toggleMenu() } else { setMenuState(true) };
          }
       }
 

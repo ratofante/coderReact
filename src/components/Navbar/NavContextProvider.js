@@ -6,10 +6,17 @@ const NavContextProvider = ({ children }) => {
 
    const [menuState, setMenuState] = useState(false);
 
+   const toggleMenu = () => {
+      setMenuState(!menuState);
+   }
+
+
+
    return (
       <NavContext.Provider value={{
          menuState,
-         setMenuState
+         setMenuState,
+         toggleMenu
       }}>
          {children}
       </NavContext.Provider>

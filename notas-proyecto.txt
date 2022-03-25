@@ -1,0 +1,5 @@
+CART:
+
+Chequear que se actualice bien el 'count' del cart. A veces queda activo y aparece 'available' como -x. 
+Podría revisar para que si available es <= 0 se muestre un aviso de que no hay items disponibles. 
+

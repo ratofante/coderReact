@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { CartContext } from '../../CartContextProvider';
 
 import FirebaseApp from '../../credentials';
 import { getFirestore, collection, getDocs } from 'firebase/firestore';
@@ -9,24 +10,14 @@ const db = getFirestore(FirebaseApp);
 
 const Products = () => {
 
-   const [products, setProducts] = useState([]);
+   const { products } = useContext(CartContext);
+   const [productos, setProductos] = useState([]);
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
 
-      const asynCall = async () => {
-         const querySnapshot = await getDocs(collection(db, 'products'));
+      if (products) { setLoading(false) }
 
-         let productList = [];
-
-         querySnapshot.forEach(doc => {
-            productList.push({ ...doc.data(), key: doc.id, })
-         });
-
-         setProducts(productList);
-         setLoading(false);
-      }
-      asynCall();
    }, []);
 
    return (<>
