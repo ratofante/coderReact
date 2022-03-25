@@ -16,6 +16,7 @@ export function CartContextProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
     const [storage, setStorage] = useState('');
 
+
     const getProducts = async () => {
         const querySnapshot = await getDocs(collection(db, 'products'));
         let productList = [];
@@ -24,6 +25,8 @@ export function CartContextProvider({ children }) {
         });
         setProducts(productList);
     }
+
+
     // STORAGE SET UP
     const checkStorage = () => {
 
@@ -49,6 +52,7 @@ export function CartContextProvider({ children }) {
         getProducts();
         checkStorage();
     }, []);
+
 
 
     // ADD ITEMS TO CART

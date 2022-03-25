@@ -15,7 +15,7 @@ const NavItemDropdown = (props) => {
 
     return (
         <li className="nav-item">
-            <div className="icon-button" onClick={() => { setMenuState(!menuState) }}>
+            <div className="icon-button" onClick={() => { setMenuState(true) }}>
                 {props.icon}
             </div>
             <ClickOutside>

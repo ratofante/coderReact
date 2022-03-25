@@ -4,19 +4,15 @@ export const NavContext = React.createContext();
 
 const NavContextProvider = ({ children }) => {
 
-   const [menuState, setMenuState] = useState(false);
+   const [menuState, setMenuState] = useState(null);
 
-   const toggleMenu = () => {
-      setMenuState(!menuState);
-   }
-
+   console.log('navContext trigger', menuState);
 
 
    return (
       <NavContext.Provider value={{
          menuState,
-         setMenuState,
-         toggleMenu
+         setMenuState
       }}>
          {children}
       </NavContext.Provider>

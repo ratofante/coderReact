@@ -11,7 +11,6 @@ const db = getFirestore(FirebaseApp);
 const Products = () => {
 
    const { products } = useContext(CartContext);
-   const [productos, setProductos] = useState([]);
    const [loading, setLoading] = useState(true);
 
    useEffect(() => {
