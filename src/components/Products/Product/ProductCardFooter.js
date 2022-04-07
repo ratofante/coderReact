@@ -4,6 +4,8 @@ import LoadingMin from '../../Loading/LoadingMin';
 
 import { BsCart3 as CartIcon } from 'react-icons/bs';
 import { GrFormAdd as Add, GrFormSubtract as Minus } from 'react-icons/gr';
+import { findDOMNode } from 'react-dom';
+import ProductCard from './ProductCard';
 
 const ProductCardFooter = ({ product }) => {
 
@@ -21,17 +23,19 @@ const ProductCardFooter = ({ product }) => {
       cartItems.forEach(e => {
          if (e.key === product.key) {
             // el item está en el carrito! :
-            setAvailable((product.qty - e.count) - itemCount);
+            setAvailable(product.qty - e.count);
+            setItemCount(0);
          }
       });
-   }, [addItemToCart]);
-
-
+   }, [cartItems]);
 
    const addItem = () => {
       if (available > 0) {
          setItemCount(itemCount + 1);
          setAvailable(available - 1);
+      } else {
+         setMessage('There are no more items available');
+         showMessage();
       }
    }
    const removeItem = () => {
@@ -65,8 +69,14 @@ const ProductCardFooter = ({ product }) => {
          }, 2500)
          card.classList.remove('move-left');
       } else {
-         setMessage('Please tell us how many items do you want to add');
-         showMessage();
+         if (available === 0) {
+            setMessage('There are no more items available');
+            showMessage();
+         } else {
+            setMessage('Select how many items do you want');
+            showMessage();
+         }
+
       }
    }
 
@@ -80,7 +90,7 @@ const ProductCardFooter = ({ product }) => {
    }
 
    return (<>
-      <div id='cart-message'>El mensaje{message}</div>
+      <div id='cart-message'>{message}</div>
       <div className="product-card-footer">
          <div className="qty-counter">
             <span>Available items: {available}</span>

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../../CartContextProvider';
 
 
@@ -6,6 +6,15 @@ const CartItem = ({ item }) => {
    //console.log(item)
 
    const { removeItem } = useContext(CartContext);
+
+   const [soldOut, setSoldOut] = useState(false);
+
+   // useEffect(() => {
+   //    if (item.qty === item.count) {
+   //       setSoldOut(!soldOut);
+   //    }
+   // }, [item.count, item.qty]);
+
 
 
 
@@ -19,7 +28,7 @@ const CartItem = ({ item }) => {
                $ {item.price}
             </p>
             <p>
-               Available: {item.qty - item.count}
+               Available: {soldOut ? <SoldOut /> : item.qty - item.count}
             </p>
             <p>Items to purchase: {item.count} </p>
 
@@ -38,6 +47,14 @@ const CartItem = ({ item }) => {
          </div>
       </div>
    )
+}
+
+const SoldOut = () => {
+   return (<>
+      <div>
+         <span>There are no more items available</span>
+      </div>
+   </>);
 }
 
 export default CartItem

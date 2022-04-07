@@ -6,9 +6,6 @@ const NavContextProvider = ({ children }) => {
 
    const [menuState, setMenuState] = useState(null);
 
-   console.log('navContext trigger', menuState);
-
-
    return (
       <NavContext.Provider value={{
          menuState,

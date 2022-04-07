@@ -13,7 +13,6 @@ const Cart = () => {
         cartItems.forEach(e => {
             sumaTotal += e.count * e.price;
         });
-        console.log(sumaTotal);
         setTotal(sumaTotal);
     }, [cartItems]);
 

@@ -16,42 +16,59 @@ export function CartContextProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
     const [storage, setStorage] = useState('');
 
-
-    const getProducts = async () => {
-        const querySnapshot = await getDocs(collection(db, 'products'));
-        let productList = [];
-        querySnapshot.forEach(doc => {
-            productList.push({ ...doc.data(), key: doc.id, })
-        });
-        setProducts(productList);
-    }
-
-
-    // STORAGE SET UP
+    // STORAGE SET UP & CHECK
     const checkStorage = () => {
-
-        let previous = sessionStorage.getItem('products');
-        //chequeamos el estado del storage
-        switch (previous) {
-            case null:
-                console.log('storage no seteado')
-                break;
-            //Si está seteado pero vacío.
-            case '':
-                sessionStorage.removeItem('products');
-                break;
-            //seteado y con elementos!
-            default:
-                setStorage(sessionStorage.getItem('products'));
-                console.log(storage);
-                break;
+        let initialState = sessionStorage.getItem('products');
+        const itemsInStorage = [];
+        if (initialState !== null && initialState.length > 0) {
+            setStorage(initialState);
+            //Separamos cada producto por la ,
+            let itemArray = initialState.split(',');
+            itemArray.pop();
+            let finalArray = [];
+            //armamos un array con duplas [key, qty] por cada producto en el storage
+            itemArray.forEach(e => {
+                finalArray.push(e.split('/'));
+            })
+            // chequeamos en products las coincidencias con el storage
+            // y le pasamos el count de items seleccionados. 
+            // generamos nuevo array con itemsInStorage
+            finalArray.forEach(e => {
+                products.forEach(p => {
+                    if (p.key === e[0]) {
+                        const newItem = { ...p, count: e[1] };
+                        itemsInStorage.push(newItem);
+                    }
+                })
+            });
+            // Seteamos los items del storage en el cart! 
+            setCartItems(itemsInStorage);
         }
     }
-
+    //Query Select ALL
+    async function getProducts() {
+        const querySnapshot = await getDocs(collection(db, 'products'));
+        let productList = [];
+        let prepareItems = new Promise((resolve, reject) => {
+            querySnapshot.forEach(doc => {
+                productList.push({ ...doc.data(), key: doc.id, })
+            });
+            resolve();
+        });
+        prepareItems.then(() => {
+            setProducts(productList);
+        });
+    }
+    // Primer effect setea los products
     useEffect(() => {
         getProducts();
-        checkStorage();
     }, []);
+    //segundo effect chequea el storage cuando hayan cambios en products,
+    // Así chequeo cuando ya estén cargados los products si es que hay 
+    // coincidencias en el storage para cargarlos en el carrito. 
+    useEffect(() => {
+        checkStorage();
+    }, [products]);
 
 
 
@@ -66,13 +83,43 @@ export function CartContextProvider({ children }) {
                 setCartItems(cartItems);
                 yaEnCart = true;
 
-                //Storage
+                //Manejo en el Storage
+                let previous = sessionStorage.getItem('products');
+                previous = previous.split(',');
+                previous.pop();
+                let storageArray = [];
+                storageArray.splice(0, storageArray.length);
 
+                previous.forEach(e => {
+                    storageArray.push(e.split('/'));
+                });
 
+                console.log(storageArray);
+                for (let i = 0; i < storageArray.length; i++) {
+                    console.log(storageArray[i][0], storageArray[i][1]);
+                    if (storageArray[i][0] === item.key) {
+                        storageArray[i][1] = parseInt(storageArray[i][1]) + parseInt(count);
+                    }
+                }
+                console.log(storageArray);
+
+                let storageString = '';
+                storageArray.forEach(e => {
+                    console.log(e);
+                    console.log(`${e[0]}/${e[1]},`);
+                    storageString.concat(`${e[0]}/${e[1]},`);
+                    storageString += `${e[0]}/${e[1]},`;
+                });
+
+                console.log(storageString);
+                storageString.slice(0, -1);
+                setStorage(storageString);
+                sessionStorage.setItem('products', storageString);
             }
         }
         //item NO ESTÁ EN EL CART, lo agregamos.
         if (yaEnCart === false) {
+            console.log('no está en el cart');
             const newItem = { ...item, count: count };
             setCartItems([...cartItems, newItem]);
 

@@ -1,6 +1,6 @@
 import { BsCart3 as CartIcon, BsPerson as PersonIcon } from 'react-icons/bs';
 import { NavLink } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../CartContextProvider';
 
 
@@ -8,6 +8,11 @@ import { CartContext } from '../../CartContextProvider';
 const NavItems = () => {
 
     const { items } = useContext(CartContext);
+    const [itemsInCart, setItemsInCart] = useState(null);
+
+    useEffect(() => {
+        setItemsInCart(items);
+    }, [items]);
 
     return (<>
         <li className="nav-item">

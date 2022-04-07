@@ -46,6 +46,9 @@ const Products = () => {
                         {e.description}
                      </p>
                   </div>
+                  <div className='price-tag'>
+                     <span>$ {e.price}</span>
+                  </div>
                </div>
             </Link>
          );
