@@ -47,7 +47,7 @@ const Products = () => {
                      </p>
                   </div>
                   <div className='price-tag'>
-                     <span>$ {e.price}</span>
+                     <span>{e.qty === 0 ? 'Sold Out' : `$ ${e.price}`}</span>
                   </div>
                </div>
             </Link>

@@ -9,14 +9,11 @@ const CartItem = ({ item }) => {
 
    const [soldOut, setSoldOut] = useState(false);
 
-   // useEffect(() => {
-   //    if (item.qty === item.count) {
-   //       setSoldOut(!soldOut);
-   //    }
-   // }, [item.count, item.qty]);
-
-
-
+   useEffect(() => {
+      if (item.qty === item.count) {
+         setSoldOut(!soldOut);
+      }
+   }, [item.count, item.qty]);
 
    return (
       <div className='bg-gray-200 rounder flex flex-row border-b border-red-300 p-2'>

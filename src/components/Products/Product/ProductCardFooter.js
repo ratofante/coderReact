@@ -4,8 +4,6 @@ import LoadingMin from '../../Loading/LoadingMin';
 
 import { BsCart3 as CartIcon } from 'react-icons/bs';
 import { GrFormAdd as Add, GrFormSubtract as Minus } from 'react-icons/gr';
-import { findDOMNode } from 'react-dom';
-import ProductCard from './ProductCard';
 
 const ProductCardFooter = ({ product }) => {
 
@@ -93,7 +91,7 @@ const ProductCardFooter = ({ product }) => {
       <div id='cart-message'>{message}</div>
       <div className="product-card-footer">
          <div className="qty-counter">
-            <span>Available items: {available}</span>
+            <span>Available items: {product.qty === 0 ? 'Sold Out' : available}</span>
             <div className="item-counter">
                Items: <span><b>{itemCount}</b></span>
             </div>

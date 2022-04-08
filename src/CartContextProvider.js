@@ -57,6 +57,7 @@ export function CartContextProvider({ children }) {
         });
         prepareItems.then(() => {
             setProducts(productList);
+            console.log(typeof (productList));
         });
     }
     // Primer effect setea los products
@@ -105,12 +106,8 @@ export function CartContextProvider({ children }) {
 
                 let storageString = '';
                 storageArray.forEach(e => {
-                    console.log(e);
-                    console.log(`${e[0]}/${e[1]},`);
-                    storageString.concat(`${e[0]}/${e[1]},`);
                     storageString += `${e[0]}/${e[1]},`;
                 });
-
                 console.log(storageString);
                 storageString.slice(0, -1);
                 setStorage(storageString);

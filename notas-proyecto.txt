@@ -1,5 +1,19 @@
-CART:
+Types: 
 
-Chequear que se actualice bien el 'count' del cart. A veces queda activo y aparece 'available' como -x. 
-Podría revisar para que si available es <= 0 se muestre un aviso de que no hay items disponibles. 
-
+Bug
+Dragon
+Electric
+Fairy
+Fighting
+Fire
+Flying
+Ghost
+Grass
+Ground
+Ice
+Normal
+Poison
+Psychic 
+Rock
+Steel
+Water
