@@ -129,6 +129,7 @@ a {
    position:absolute;
    top: calc(var(--nav-size) - 2px);
    width: 300px;
+   max-height: 530px;
    transform: translateX(-94%);
    background-color: var(--bg-dark);
    border: var(--border);
@@ -176,8 +177,9 @@ transition: all var(--speed) ease;
     transform: translateX(0%);
     transition: all var(--speed) ease;
 }
-.menu-secondary-exit {
-
+.menu-types-enter-done {
+    overflow-y: scroll;
+    max-height: 500px;
 }
 .menu-secondary-exit-active {
     transform: translateX(110%);

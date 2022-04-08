@@ -1,26 +1,36 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { CartContext } from '../../CartContextProvider';
+import { useParams } from 'react-router-dom';
 
-import FirebaseApp from '../../credentials';
-import { getFirestore, collection, getDocs } from 'firebase/firestore';
 import Loading from '../Loading/Loading';
 import { Link } from 'react-router-dom';
-
-const db = getFirestore(FirebaseApp);
 
 const Products = () => {
 
    const { products } = useContext(CartContext);
    const [loading, setLoading] = useState(true);
 
+   let { type } = useParams();
+   let displayProducts = '';
+
+   if (typeof (type) !== 'undefined') {
+      displayProducts = products.filter(e => {
+         console.log(e.types, type);
+         return e.types.includes(type);
+      })
+      console.log(displayProducts);
+   } else {
+      displayProducts = products;
+   }
+
    useEffect(() => {
 
-      if (products) { setLoading(false) }
+      if (displayProducts !== '') { setLoading(false) }
 
    }, []);
 
    return (<>
-      {loading ? <Loading /> : products.map(e => {
+      {loading ? <Loading /> : displayProducts.map(e => {
          return (
             <Link to={'show/' + e.key} key={e.key}>
                <div

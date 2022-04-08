@@ -57,7 +57,7 @@ export function CartContextProvider({ children }) {
         });
         prepareItems.then(() => {
             setProducts(productList);
-            console.log(typeof (productList));
+            console.log(products);
         });
     }
     // Primer effect setea los products
@@ -133,6 +133,13 @@ export function CartContextProvider({ children }) {
     const removeItem = (id) => {
         let newCart = cartItems.filter(item => item.key !== id)
         setCartItems(newCart);
+    }
+
+    // SORT Function
+    const sortProductsByType = (array, type) => {
+        array.sort(function (a, b) {
+            return a.typ
+        })
     }
 
     return (

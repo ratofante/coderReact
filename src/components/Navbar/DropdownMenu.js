@@ -66,22 +66,120 @@ const DropdownMenu = (props) => {
                 in={activeMenu === 'types'}
                 unmountOnExit
                 timeout={500}
-                classNames='menu-secondary'
+                classNames='menu-secondary menu-types'
                 onEnter={calcHeight}
             >
                 <div className='menu'>
                     <DropdownItem>
                         <Link
-                            to="/products/type/1"
+                            to="/products/Bug"
                             onClick={() => { setMenuState(!menuState) }}>
-                            Type 1
+                            Bug
                         </Link>
                     </DropdownItem>
                     <DropdownItem>
                         <Link
-                            to="/products/type/2"
+                            to="/products/Dragon"
                             onClick={() => { setMenuState(!menuState) }}>
-                            Type 2
+                            Dragon
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Electric"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Electric
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Fairy"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Fairy
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Fighting"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Fighting
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Fire"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Fire
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Flying"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Flying
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Ghost"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Ghost
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Grass"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Grass
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Ground"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Ground
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Ice"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Ice
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Normal"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Normal
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Psychic"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Psychic
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Rock"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Rock
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Steel"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Steel
+                        </Link>
+                    </DropdownItem>
+                    <DropdownItem>
+                        <Link
+                            to="/products/Water"
+                            onClick={() => { setMenuState(!menuState) }}>
+                            Water
                         </Link>
                     </DropdownItem>
                     <DropdownItem

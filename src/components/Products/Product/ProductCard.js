@@ -1,11 +1,12 @@
 import { useEffect } from 'react';
 import { VscChromeClose as CrossIcon } from 'react-icons/vsc';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import ProductCardFooter from './ProductCardFooter';
 
 const ProductCard = (props) => {
 
    const { product } = props;
+   const navigate = useNavigate();
 
    useEffect(() => {
       let card = document.getElementById('product-card-container');
@@ -18,9 +19,9 @@ const ProductCard = (props) => {
       <div id="product-card-container">
          <section className="text-gray-700 body-font overflow-hidden bg-white">
             <div className="exit-product">
-               <Link to={'/products'} className="text-gray-700">
+               <button onClick={() => navigate(-1)} className="text-gray-700">
                   <CrossIcon className="exit-product-icon" />
-               </Link>
+               </button>
             </div>
             <div className="product-card container mx-auto">
                <div className="lg:w-4/5 mx-auto flex flex-wrap">
