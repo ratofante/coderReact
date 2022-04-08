@@ -15,7 +15,7 @@ export const Navbar = () => {
             <nav className='navbar fixed w-screen'>
                 <ul className="navbar-nav">
                     <div className='navbar-logo'>
-                        <Link to={'/'}>
+                        <Link to={'/home'}>
                             <img className='navbar-logo-img' src={logo} alt="shop-logo" />
                         </Link>
                         <h2 className="navbar-logo-title">SHOP</h2>

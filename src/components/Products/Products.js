@@ -15,10 +15,8 @@ const Products = () => {
 
    if (typeof (type) !== 'undefined') {
       displayProducts = products.filter(e => {
-         console.log(e.types, type);
          return e.types.includes(type);
       })
-      console.log(displayProducts);
    } else {
       displayProducts = products;
    }

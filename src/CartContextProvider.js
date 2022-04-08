@@ -57,7 +57,6 @@ export function CartContextProvider({ children }) {
         });
         prepareItems.then(() => {
             setProducts(productList);
-            console.log(products);
         });
     }
     // Primer effect setea los products
@@ -131,15 +130,32 @@ export function CartContextProvider({ children }) {
 
     // REMOVE ITEMS FROM CART
     const removeItem = (id) => {
+        console.log(id);
+        let itemToRemove = [];
+        cartItems.forEach(e => {
+            console.log(e.key);
+            if (e.key === id) {
+                itemToRemove = e;
+            }
+        })
+        console.log(itemToRemove);
+
         let newCart = cartItems.filter(item => item.key !== id)
+        let previous = sessionStorage.getItem('products');
+        console.log(previous);
+        console.log(itemToRemove.count);
+        let actualItems = previous.replace(`${id}/${itemToRemove.count},`, "");
+        sessionStorage.setItem('products', actualItems);
+        setStorage(actualItems);
+
         setCartItems(newCart);
     }
 
-    // SORT Function
-    const sortProductsByType = (array, type) => {
-        array.sort(function (a, b) {
-            return a.typ
-        })
+    // Flush CART & STORAGE
+    const flushCartAndStorage = () => {
+        setCartItems([]);
+        sessionStorage.removeItem('products');
+        sessionStorage.clear();
     }
 
     return (
@@ -149,6 +165,7 @@ export function CartContextProvider({ children }) {
             cartItems,
             items: cartItems.length,
             removeItem,
+            flushCartAndStorage
         }}>
             {children}
         </CartContext.Provider>

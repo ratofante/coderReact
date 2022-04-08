@@ -14,23 +14,6 @@ import Product from "./components/Products/Product/Product";
 const auth = getAuth(FirebaseApp);
 
 function App() {
-
-    // const [regUser, setRegUser] = useState(null);
-
-    // Detecta cambios en const auth. En SignUp.js, al ingresar o crear usuario
-    // pasa userFirebase y lo guardamos en el sate regUser. Esto nos permite
-    // acceder luego a propiedades guardadas de ese usuario como, más abajo, en 
-    // CartContextProvider, pasamos regUser.email
-    // onAuthStateChanged(auth, (userFirebase) => {
-    //     if (userFirebase) {
-    //         //with session init
-    //         setRegUser(userFirebase);
-    //     } else {
-    //         setRegUser(null);
-    //     }
-    // })
-
-    // if (regUser) {
     return (
         <CartContextProvider /*userEmail={regUser.email}*/>
             <BrowserRouter>
@@ -38,6 +21,7 @@ function App() {
                 <Routes>
 
                     <Route index element={<Home />} />
+                    <Route path="/home/:success" element={<Home />} />
 
                     <Route path="products" element={<ProductList />}>
                         <Route path="show/:id" element={<Product />} />
@@ -53,15 +37,5 @@ function App() {
             </BrowserRouter>
         </CartContextProvider>
     );
-    // } else {
-    //     return (
-    //         <>
-    //             <SignUp></SignUp>
-    //         </>
-
-    //     );
-    // }
-
-
 }
 export default App;

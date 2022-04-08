@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { VscChromeClose as CrossIcon } from 'react-icons/vsc';
-import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import ProductCardFooter from './ProductCardFooter';
 
 const ProductCard = (props) => {
