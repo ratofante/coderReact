@@ -1,12 +1,34 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { VscChromeClose as CrossIcon } from 'react-icons/vsc';
+import { IoIosArrowUp } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
+import Details from './Details';
 import ProductCardFooter from './ProductCardFooter';
+import Reviews from './Reviews';
+import { connectFirestoreEmulator } from 'firebase/firestore';
 
 const ProductCard = (props) => {
 
    const { product } = props;
    const navigate = useNavigate();
+   const [details, setDetails] = useState(false);
+
+   const toggleDetails = () => {
+      const icon = document.getElementById('detailBtn').children[0].classList;
+      const div = document.getElementById('product-card-details').classList;
+      if (icon.contains('look-up')) {
+         div.remove('details-max-height');
+         div.add('details-min-height');
+         icon.remove('look-up');
+         icon.add('look-down');
+      } else {
+         div.remove('details-min-height');
+         div.add('details-max-height');
+         icon.add('look-up');
+         icon.remove('look-down');
+      }
+      setDetails(!details);
+   }
 
    useEffect(() => {
       let card = document.getElementById('product-card-container');
@@ -17,7 +39,7 @@ const ProductCard = (props) => {
 
    return (
       <div id="product-card-container">
-         <section className="text-gray-700 body-font overflow-hidden bg-white">
+         <section className="text-gray-700 body-font overflow-hidden bg-white rounded">
             <div className="exit-product">
                <button onClick={() => navigate(-1)} className="text-gray-700">
                   <CrossIcon className="exit-product-icon" />
@@ -32,32 +54,13 @@ const ProductCard = (props) => {
 
                   <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
                      <h2 className="text-sm title-font text-gray-500 tracking-widest">
-                        Product n° {product.key}
+                        Product n° {product.key.substring(4)}
                      </h2>
                      <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
                         {product.name.slice(0, 1).toUpperCase() + product.name.slice(1)}
                      </h1>
                      <div className="flex mb-4">
-                        <span className="flex justify-center flex-col md:flex-row items-center">
-                           <div className="stars-review">
-                              <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                              </svg>
-                              <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                              </svg>
-                              <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                              </svg>
-                              <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                              </svg>
-                              <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-red-500" viewBox="0 0 24 24">
-                                 <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-                              </svg>
-                           </div>
-                           <span className="text-gray-600 md:ml-3">4 Reviews</span>
-                        </span>
+                        <Reviews />
                         <span className="flex ml-3 pl-3 py-2 border-l-2 border-gray-200">
                            <div className="product-card-small-img">
                               <img src={product.smallImgFront} alt={product.name} />
@@ -67,25 +70,13 @@ const ProductCard = (props) => {
                            </div>
                         </span>
                      </div>
-                     <details className="leading-relaxed">
-                        <summary>
-                           Details
-                        </summary>
-                        <div>
-                           <p>Base Exp: {product.baseExp}</p>
-                           <p>Height: {product.height}</p>
-                           <p>Health Points: {product.hp}</p>
-                           <p>Attack: {product.attack}</p>
-                           <p>Defense: {product.defense}</p>
-                           <p>Special Attack: {product.specialAttack}</p>
-                           <p>Special Defense: {product.specialDefense}</p>
-                           <p>Speed: {product.speed}</p>
-                           <p>Weight: {product.weight}</p>
-                        </div>
-                     </details>
-
+                     <div id="product-card-details">
+                        <button id="detailBtn" onClick={() => { toggleDetails() }} className="flex flex-row items-center">
+                           Details <IoIosArrowUp className='ml-3' />
+                        </button>
+                        {details && <Details data={product} />}
+                     </div>
                      <ProductCardFooter product={product} />
-
                   </div>
                </div>
             </div>

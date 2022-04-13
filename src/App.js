@@ -11,6 +11,7 @@ import FirebaseApp from "./credentials";
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import ProductList from "./components/Products/ProductList";
 import Product from "./components/Products/Product/Product";
+import Footer from "./components/Footer/Footer";
 const auth = getAuth(FirebaseApp);
 
 function App() {
@@ -19,21 +20,17 @@ function App() {
             <BrowserRouter>
                 <Navbar className='navbar fixed w-screen' />
                 <Routes>
-
                     <Route index element={<Home />} />
                     <Route path="/home/:success" element={<Home />} />
-
                     <Route path="products" element={<ProductList />}>
                         <Route path="show/:id" element={<Product />} />
                     </Route>
-
                     <Route path="products/:type" element={<ProductList />}>
                         <Route path="show/:id" element={<Product />} />
                     </Route>
-
                     <Route path="cart" element={<Cart />}></Route>
-
                 </Routes>
+                <Footer />
             </BrowserRouter>
         </CartContextProvider>
     );

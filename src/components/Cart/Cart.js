@@ -27,16 +27,16 @@ const Cart = () => {
 
     return (
         <>
-            <div className='m-auto mt-32 p-4 bg-white w-11/12 rounded'>
+            <div className='m-auto mt-32 p-4 cart-container w-11/12 rounded'>
                 <div className='cart-items-purchase'>
-                    <h1 className='text-xl text-center color-gray-700'>My Cart</h1>
+                    <h1 className='text-xl text-center text-yellow-500 font-bold mb-4 text-shadow'>My Cart</h1>
                     {cartItems.length > 0 ? cartItems.map((item) => {
                         return <CartItem item={item} key={item.key} />
                     }) : <p className="mt-6 text-center">There's no product in your cart</p>}
-                    <div className='relative flex flex-row items-center justify-between max-w-sm p-6 pb-0'>
+                    <div className='cart-btn-div relative flex flex-col sm:flex-row items-center justify-between max-w-sm p-6 pb-0'>
                         {total > 0 && <>
-                            <p>
-                                Total : $ {total}
+                            <p className='text-white'>
+                                Total : $ <span className='text-yellow-500 font-bold'>{total}</span>
                             </p>
                             <button className='bg-green-500 hover:bg-green-900 text-white font-bold py-2 px-4 rounded' onClick={() => { setCheckout(true) }}>
                                 Purchase
@@ -51,11 +51,13 @@ const Cart = () => {
                                 <div className="flex justify-between">
                                     <button
                                         onClick={() => { flushCart() }}
-                                        className='hover:text-slate-300'>yes</button>
+                                        className='hover:text-slate-300'>yes
+                                    </button>
                                     <span> / </span>
                                     <button
                                         onClick={() => { dropCart() }}
-                                        className='hover:text-slate-300'>cancel</button>
+                                        className='hover:text-slate-300'>cancel
+                                    </button>
                                 </div>
                             </div>}
                         </>}

@@ -88,14 +88,16 @@ const ProductCardFooter = ({ product }) => {
    }
 
    return (<>
-      <div id='cart-message'>{message}</div>
+      <div id='cart-message' className='text-yellow-500 font-medium'>{message}</div>
       <div className="product-card-footer">
-         <div className="qty-counter">
-            <span>Available items: {product.qty === 0 ? 'Sold Out' : available}</span>
-            <div className="item-counter">
-               Items: <span><b>{itemCount}</b></span>
+         <div className="qty-counter mt-4 bg-slate-100 rounded p-1">
+            <div className='qty-display flex flex-col justify-start'>
+               <span>Available items: {product.qty === 0 ? 'Sold Out' : available}</span>
+               <div className="item-counter">
+                  Items: <span><b>{itemCount}</b></span>
+               </div>
             </div>
-            <div className="add-item-counter">
+            <div className="add-item-counter ml-auto">
                <button className='counter-btn' onClick={() => { addItem() }}><Add /></button>
                <button className='counter-btn' onClick={() => { removeItem() }}><Minus /></button>
             </div>

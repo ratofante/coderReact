@@ -57,10 +57,10 @@ const Checkout = ({ total }) => {
       <div className='form-container mt-8'>
          <form id="purchase-form" action="">
             <fieldset>
-               <legend>Please complete the following fields: </legend>
-               <div className='form-control p-5 w-96 flex items-center justify-evenly'>
+               <legend className='text-white'>Please complete the following fields: </legend>
+               <div className='form-control'>
                   <label
-                     className='text-lg'
+                     className='text-lg mt-4'
                      htmlFor="name"> Name:
                   </label>
                   <input className='bg-gray-200 p-2 rounded'
@@ -68,7 +68,7 @@ const Checkout = ({ total }) => {
                      id='name'
                      name='name' />
                </div>
-               <div className='form-control p-5 w-96 flex items-center justify-evenly'>
+               <div className='form-control'>
                   <label
                      className='text-lg'
                      htmlFor="email"> Email:
@@ -78,7 +78,7 @@ const Checkout = ({ total }) => {
                      id='email'
                      name='email' />
                </div>
-               <div className='form-control p-5 w-96 flex items-center justify-evenly'>
+               <div className='form-control'>
                   <label
                      className='text-lg'
                      htmlFor="address"> Address:
